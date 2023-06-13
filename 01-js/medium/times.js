@@ -7,6 +7,23 @@ Try running it for
 Hint - use Date class exposed in JS
 */
 
+
 function calculateTime(n) {
-    return 0.01;
+    let sum = 0;
+    const timeInit = performance.now();
+    for(let  i=1; i<=n; i++){
+	sum += i;
+    }
+    const timeFinal = performance.now();
+    return (timeFinal-timeInit);
 }
+
+
+function print(){
+    
+    console.log('Milliseconds:',calculateTime(100));
+    console.log(calculateTime('Milliseconds',100000));
+    console.log(calculateTime('Milliseconds',1000000000))
+}
+
+print();

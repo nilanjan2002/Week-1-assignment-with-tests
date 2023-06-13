@@ -1,13 +1,27 @@
-/*
-  Implement a function `isPalindrome` which takes a string as argument and returns true/false as its result.
-  Note: the input string is case-insensitive which means 'Nan' is a palindrom as 'N' and 'n' are considered case-insensitive.
+function simplifyString(str) {
+  const punctuations = [',', '?', ' ','!', '.'];
+  const result = [];
+  for (let i = 0; i < str.length; i++) {
+    if (!punctuations.includes(str[i])) {
+      result.push(str[i]);
+    }
+  }
+  return result.join('').toLowerCase();
+}
 
-  Once you've implemented the logic, test your code by running
-  - `npm run test-palindrome`
-*/
+const str = 'Eva, can I see bees in a cave?';
 
 function isPalindrome(str) {
+  const simplifiedStr = simplifyString(str);
+  const len = simplifiedStr.length;
+  for (let i = 0; i < Math.floor(len / 2); i++) {
+    if (simplifiedStr[i] !== simplifiedStr[len - 1 - i]) {
+      return false;
+    }
+  }
   return true;
 }
+
+isPalindrome(str);
 
 module.exports = isPalindrome;
